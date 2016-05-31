@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation", "1. Presentation", "{F8452CF8-69A3-447F-9D49-F218ABD83690}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Domain", "2. Domain", "{760D98FC-F6EB-47C9-8330-745BEC380AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. DataAccess", "3. DataAccess", "{785FA919-B9D3-4BA7-91D7-410C66B8A09C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Common", "4. Common", "{98E050C9-8DC3-48A4-B72A-E65AD6109DF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8AB89ED2-388F-43B2-8E53-53EBAA68E518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guldborgen.Booking.Web", "src\Guldborgen.Booking.Web\Guldborgen.Booking.Web.csproj", "{D2BC4C69-23AF-4BF7-B85D-613BD5AF8614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guldborgen.Booking.Domain", "src\Guldborgen.Booking.Domain\Guldborgen.Booking.Domain.csproj", "{01803FFB-B1DF-499D-A471-B6A1B08F923E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guldborgen.Booking.Common", "src\Guldborgen.Booking.Common\Guldborgen.Booking.Common.csproj", "{C6693238-0261-4D48-B432-CF7B55C2BC91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guldborgen.Booking.DependencyResolver", "src\Guldborgen.Booking.DependencyResolver\Guldborgen.Booking.DependencyResolver.csproj", "{E235F54E-C45E-4BED-8ABF-AB9760229B98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guldborgen.Booking.DataAccess", "src\Guldborgen.Booking.DataAccess\Guldborgen.Booking.DataAccess.csproj", "{4694E4E5-2F10-4ABC-8440-CE8C46F81EDD}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Guldborgen.Booking.Database", "src\Guldborgen.Booking.Database\Guldborgen.Booking.Database.sqlproj", "{AD9F8143-38FC-4F71-90E5-9BA39719462C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2BC4C69-23AF-4BF7-B85D-613BD5AF8614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BC4C69-23AF-4BF7-B85D-613BD5AF8614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BC4C69-23AF-4BF7-B85D-613BD5AF8614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BC4C69-23AF-4BF7-B85D-613BD5AF8614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01803FFB-B1DF-499D-A471-B6A1B08F923E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01803FFB-B1DF-499D-A471-B6A1B08F923E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01803FFB-B1DF-499D-A471-B6A1B08F923E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01803FFB-B1DF-499D-A471-B6A1B08F923E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6693238-0261-4D48-B432-CF7B55C2BC91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6693238-0261-4D48-B432-CF7B55C2BC91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6693238-0261-4D48-B432-CF7B55C2BC91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6693238-0261-4D48-B432-CF7B55C2BC91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E235F54E-C45E-4BED-8ABF-AB9760229B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E235F54E-C45E-4BED-8ABF-AB9760229B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E235F54E-C45E-4BED-8ABF-AB9760229B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E235F54E-C45E-4BED-8ABF-AB9760229B98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4694E4E5-2F10-4ABC-8440-CE8C46F81EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4694E4E5-2F10-4ABC-8440-CE8C46F81EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4694E4E5-2F10-4ABC-8440-CE8C46F81EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4694E4E5-2F10-4ABC-8440-CE8C46F81EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9F8143-38FC-4F71-90E5-9BA39719462C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9F8143-38FC-4F71-90E5-9BA39719462C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9F8143-38FC-4F71-90E5-9BA39719462C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AD9F8143-38FC-4F71-90E5-9BA39719462C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9F8143-38FC-4F71-90E5-9BA39719462C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9F8143-38FC-4F71-90E5-9BA39719462C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8452CF8-69A3-447F-9D49-F218ABD83690} = {8AB89ED2-388F-43B2-8E53-53EBAA68E518}
+		{760D98FC-F6EB-47C9-8330-745BEC380AD1} = {8AB89ED2-388F-43B2-8E53-53EBAA68E518}
+		{785FA919-B9D3-4BA7-91D7-410C66B8A09C} = {8AB89ED2-388F-43B2-8E53-53EBAA68E518}
+		{98E050C9-8DC3-48A4-B72A-E65AD6109DF3} = {8AB89ED2-388F-43B2-8E53-53EBAA68E518}
+		{D2BC4C69-23AF-4BF7-B85D-613BD5AF8614} = {F8452CF8-69A3-447F-9D49-F218ABD83690}
+		{01803FFB-B1DF-499D-A471-B6A1B08F923E} = {760D98FC-F6EB-47C9-8330-745BEC380AD1}
+		{C6693238-0261-4D48-B432-CF7B55C2BC91} = {98E050C9-8DC3-48A4-B72A-E65AD6109DF3}
+		{E235F54E-C45E-4BED-8ABF-AB9760229B98} = {98E050C9-8DC3-48A4-B72A-E65AD6109DF3}
+		{4694E4E5-2F10-4ABC-8440-CE8C46F81EDD} = {785FA919-B9D3-4BA7-91D7-410C66B8A09C}
+		{AD9F8143-38FC-4F71-90E5-9BA39719462C} = {98E050C9-8DC3-48A4-B72A-E65AD6109DF3}
+	EndGlobalSection
+EndGlobal

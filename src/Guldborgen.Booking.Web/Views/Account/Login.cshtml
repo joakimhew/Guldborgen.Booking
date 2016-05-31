@@ -1,0 +1,79 @@
+﻿@using System.Runtime.InteropServices
+@model Guldborgen.Booking.Web.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title>title</title>
+    <link rel="stylesheet prefetch" href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+    <link rel="stylesheet prefetch" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/Content/test.js"></script>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card"></div>
+        <div class="card">
+            <h1 class="title">Logga in</h1>
+          
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
+                <ul class="login-validation-error">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(state => state.Errors))
+                    {
+                        <li class="fa fa-exclamation-circle">  @error.ErrorMessage</li>
+                    }
+                </ul>
+
+                <div class="input-container">
+                    @Html.TextBoxFor(model => model.Email, new { required = "required" })
+                    @Html.LabelFor(model => model.Email)
+                    <div class="bar"></div>
+                </div>
+                    <div class="input-container">
+                        @Html.PasswordFor(model => model.Password, new { required = "required" })
+                        @Html.LabelFor(model => model.Password)
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <input type="submit" value="Gå">
+                    </div>
+                    <div class="footer">
+                        <a href="#">Glömt ditt lösenord?</a>
+                    </div>
+            }
+        </div>
+        <div class="card alt">
+            <div class="toggle" onclick="addClass()"></div>
+            <h1 class="title">
+                Kontakt
+                <span class="close" onclick="removeClass()"></span>
+            </h1>
+            <form>
+
+                <div class="input-container">
+                    <input type="text" id="Email" required="required" />
+                    <label for="Email">Din e-postadress</label>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="input-container">
+                    <textarea id="Body" required></textarea>
+                    <label for="Body">Meddelande</label>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="button-container">
+                    <input type="submit" value="Skicka">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

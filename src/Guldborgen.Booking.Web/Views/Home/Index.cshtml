@@ -1,0 +1,72 @@
+﻿@using Guldborgen.Booking.Web.ViewModels
+@model Guldborgen.Booking.Web.ViewModels.IndexViewModel
+
+@{
+    Layout = "../../Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <script src="~/Content/test.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p>
+                    Tvättrum status:
+                    @if (@Model.LaundryRoomStatus == LaundryRoomStatus.Busy)
+            {
+                        <span class="label label-danger">upptaget</span>
+                    }
+                    else if (Model.LaundryRoomStatus == LaundryRoomStatus.Free)
+                    {
+                        <span class="label label-success">ledigt</span>
+                    }
+                </p>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    @if (Model.CurrentUser != null)
+                    {
+                        <div class="row col-md-3">
+                            <i class="col-xs-1 fa fa-user" aria-hidden="true"></i>
+                            <p class="col-xs-12">Uppbokad av @Model.CurrentUser.FirstName @Model.CurrentUser.LastName</p>
+                        </div>
+
+
+                        <div class="row col-md-3">
+                            <i class="col-xs-1 fa fa-comment" aria-hidden="true"></i>
+                            <p class="col-xs-12">Kommentar: @Model.UserComment</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5>Boka tvättid</h5>
+            </div>
+            <div class="panel-body">
+                @{ Html.RenderAction("BookingCalendar", "Home"); }
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

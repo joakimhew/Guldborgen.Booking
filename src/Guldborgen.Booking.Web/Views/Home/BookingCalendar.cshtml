@@ -1,0 +1,72 @@
+﻿@using Guldborgen.Booking.Common.Extensions
+@model Guldborgen.Booking.Web.ViewModels.BookingCalendarViewModel
+
+<head>
+    <title></title>
+    <script src="~/Content/booking.js"></script>
+
+</head>
+
+<nav>
+    <ul class="pager">
+        <li class="previous"><a href="/?week=@(Model.CurrentWeek - 1)"><span aria-hidden="true">&larr;</span> Vecka @(Model.CurrentWeek - 1)</a></li>
+        <li class="next"><a href="/?week=@(Model.CurrentWeek + 1)">Vecka @(Model.CurrentWeek + 1)<span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+
+<table class="table table-bordered">
+
+
+    @{
+        var culture = new System.Globalization.CultureInfo("sv-SE");
+        <tr>
+
+            @foreach (var date in @Model.LaundryReservations.Keys)
+            {
+                var c = (date.ToShortDateString() == DateTime.Now.ToShortDateString() ? "active" : "");
+
+                <th class="@c">
+                    @culture.DateTimeFormat.GetDayName(date.DayOfWeek) @date.ToShortDateString()
+                </th>
+            }
+        </tr>
+        <tr>
+            @foreach (var reservation in @Model.LaundryReservations)
+            {
+                var c = (reservation.Key.ToShortDateString() == DateTime.Now.ToShortDateString() ? "active" : "");
+
+                <td class="@c">
+                    <ul class="list-unstyled">
+                        @foreach (var laundryTime in reservation.Value)
+                        {
+                            var timeRange = $"{laundryTime.LaundryTime.StartTime.ToHourMinutes()} - {laundryTime.LaundryTime.EndTime.ToHourMinutes()}";
+                            if (laundryTime.IsBooked)
+                            {
+                                <li><a href="#"><del>@timeRange</del></a></li>
+                            }
+                            else if (reservation.Key < DateTime.Now.AddDays(-1))
+                            {
+                                <li class="unavailable">@timeRange</li>
+                            }
+                            else
+                            {
+                                var formId = ("formId-" + laundryTime.LaundryTime.Id + reservation.Key.Year + reservation.Key.Month + reservation.Key.Day);
+
+                                using (Html.BeginForm("Reserve", "Home", FormMethod.Post, new {id = formId}))
+                                {
+                                    @Html.Hidden("timespanId", laundryTime.LaundryTime.Id)
+                                    ;
+                                    @Html.Hidden("date", reservation.Key)
+                                    <li>
+                                        <a href="/?week=@(Model.CurrentWeek)" onclick="bookTime('@formId')">@timeRange</a>
+                                    </li>
+                                }
+                            }
+                        }
+
+                    </ul>
+                </td>
+            }
+        </tr>
+    }
+</table>

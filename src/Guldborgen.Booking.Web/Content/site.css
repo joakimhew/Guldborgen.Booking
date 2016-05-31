@@ -1,0 +1,40 @@
+﻿body {
+    background: #e9e9e9;
+    color: #666;
+    font-family: 'RobotoDraft','Roboto',sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+#wallpaper {
+    background-image: url(laundry.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+    z-index: -1;
+}
+
+.render-body {
+    margin: 85px 30px 30px;
+}
+
+.top-buffer {
+    margin-top: 20px;
+}
+
+del {
+    color: lightpink;
+}
+
+.unavailable {
+    color: lightgray
+}
