@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -10,7 +11,7 @@ using Guldborgen.Booking.Web.ViewModels;
 
 namespace Guldborgen.Booking.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : AsyncController
     {
         private readonly IAccountService _accountService;
 
@@ -31,13 +32,13 @@ namespace Guldborgen.Booking.Web.Controllers
 
         [HttpPost]
         [Route("account/login", Name = "Login")]
-        public ActionResult Login(LoginViewModel user)
+        public async Task<ActionResult> Login(LoginViewModel user)
         {
 
             if (!ModelState.IsValid)
                 return View();
 
-            var userId = _accountService.Login(user.Email, user.Password);
+            var userId = await _accountService.LoginAsync(user.Email, user.Password);
             if (userId != 0)
             {
                 var sessionId = Guid.NewGuid();
@@ -48,7 +49,7 @@ namespace Guldborgen.Booking.Web.Controllers
                     ExpirationDate = DateTime.Now.AddHours(3)
                 };
 
-                _accountService.AddSession(userSession);
+                await _accountService.AddSessionAsync(userSession);
                 Current.UserSession = userSession;
 
                 HttpCookie authCookie = new HttpCookie("SESSION_ID", sessionId.ToString());
@@ -66,9 +67,9 @@ namespace Guldborgen.Booking.Web.Controllers
       
         [Route("account/logout")]
         [CustomAuthorizeUser]
-        public ActionResult Logout()
+        public async Task<ActionResult> Logout()
         {
-            _accountService.RemoveSession(Current.UserSession);
+            await _accountService.RemoveSessionAsync(Current.UserSession);
             return RedirectToAction("Index", "Home");
         }
     }

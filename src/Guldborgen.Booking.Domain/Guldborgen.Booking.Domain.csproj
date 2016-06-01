@@ -53,7 +53,7 @@
       <Project>{c6693238-0261-4d48-b432-cf7b55c2bc91}</Project>
       <Name>Guldborgen.Booking.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Guldborgen.Booking.DataAccess\Guldborgen.Booking.DataAccess.csproj">
+    <ProjectReference Include="..\Guldborgen.Booking.DataAccess\Guldborgen.Booking.DataAccess.csproj">
       <Project>{4694e4e5-2f10-4abc-8440-ce8c46f81edd}</Project>
       <Name>Guldborgen.Booking.DataAccess</Name>
     </ProjectReference>

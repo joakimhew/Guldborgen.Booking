@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <HintPath>..\..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -58,7 +58,7 @@
     <Compile Include="Repositories\LaundryTimeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Guldborgen.Booking.Common\Guldborgen.Booking.Common.csproj">
+    <ProjectReference Include="..\Guldborgen.Booking.Common\Guldborgen.Booking.Common.csproj">
       <Project>{c6693238-0261-4d48-b432-cf7b55c2bc91}</Project>
       <Name>Guldborgen.Booking.Common</Name>
     </ProjectReference>

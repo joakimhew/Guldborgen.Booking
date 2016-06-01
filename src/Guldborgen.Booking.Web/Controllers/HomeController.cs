@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Guldborgen.Booking.Common.Extensions;
 using Guldborgen.Booking.Common.Helpers;
@@ -14,7 +15,7 @@ using Guldborgen.Booking.Web.ViewModels;
 
 namespace Guldborgen.Booking.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AsyncController
     {
         private readonly IBookingService _bookingService;
         private readonly IAccountService _accountService;
@@ -34,11 +35,11 @@ namespace Guldborgen.Booking.Web.Controllers
         // GET: Home
         [Route("")]
         [CustomAuthorizeUser]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
 
-            _reservations = _bookingService.GetReservations();
-            _laundryTimes = _bookingService.GetTimeSpans();
+            _reservations = await _bookingService.GetReservationsAsync();
+            _laundryTimes = await _bookingService.GetTimeSpansAsync();
 
             IndexViewModel model = new IndexViewModel();
 
@@ -59,7 +60,7 @@ namespace Guldborgen.Booking.Web.Controllers
                     laundryTime.StartTime, laundryTime.EndTime))
                 {
                     model.LaundryRoomStatus = LaundryRoomStatus.Busy;
-                    model.CurrentUser = _accountService.GetUserById(reservation.UserId);
+                    model.CurrentUser = await _accountService.GetUserByIdAsync(reservation.UserId);
                     model.UserComment = reservation.Comment;
 
                     break;
@@ -112,12 +113,12 @@ namespace Guldborgen.Booking.Web.Controllers
         [Route("{week:int?}")]
         [HttpPost]
         [CustomAuthorizeUser]
-        public ActionResult Reserve(int timespanId, DateTime date)
+        public async Task<ActionResult> Reserve(int timespanId, DateTime date)
         {
             Debug.Write($"Timespan id: {timespanId} | Date: {date}");
 
             if (Current.User.Id != null)
-                _bookingService.AddReservation(Current.User.Id.Value, timespanId, date);
+               await _bookingService.AddReservationAsync(Current.User.Id.Value, timespanId, date);
 
             return RedirectToAction("Index", "Home");
         }
