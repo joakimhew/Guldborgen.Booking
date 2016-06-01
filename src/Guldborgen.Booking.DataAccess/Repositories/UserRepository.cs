@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using Dapper;
 using Guldborgen.Booking.Common.Models;
 
@@ -14,6 +15,8 @@ namespace Guldborgen.Booking.DataAccess.Repositories
         {
             _dbConnection = dbConnection;
         }
+
+        #region Sync
 
         public User FindById(int id)
         {
@@ -62,5 +65,68 @@ namespace Guldborgen.Booking.DataAccess.Repositories
                .Query<string>("SELECT * FROM dbo.tvf_GetUserPasswordHash(@Email)", new { @Email = email })
                .FirstOrDefault();
         }
+
+       
+
+        #endregion
+
+        #region Async
+
+
+        public async Task<User> FindByIdAsync(int id)
+        {
+            var result = await _dbConnection.QueryAsync<User>(
+                "SELECT U.* " +
+                "FROM dbo.[User] U " +
+                " WHERE U.Id = @Id", new {@Id = id});
+
+            return result.FirstOrDefault();
+        }
+
+        public async Task<IEnumerable<User>> FindAllAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<IEnumerable<User>> FindAsync(string sql)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task UpdateAsync(User entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task RemoveAsync(User entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task AddAsync(User entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<User> FindByEmailAsync(string email)
+        {
+            var result = await _dbConnection.QueryAsync<User>(
+                "SELECT U.* " +
+                "FROM dbo.[User] U " +
+                " WHERE U.Email = @Email", new {@Email = email});
+
+            return result.FirstOrDefault();
+        }
+
+        public async Task<string> GetUserPasswordHashAsync(string email)
+        {
+            var result = await _dbConnection
+               .QueryAsync<string>("SELECT * FROM dbo.tvf_GetUserPasswordHash(@Email)",
+               new { @Email = email });
+
+            return result.FirstOrDefault();
+        }
+
+        #endregion
     }
 }
