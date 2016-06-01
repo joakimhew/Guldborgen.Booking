@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Guldborgen.Booking.Common.Models;
 using Guldborgen.Booking.DataAccess;
 
@@ -17,6 +18,8 @@ namespace Guldborgen.Booking.Domain
             _laundryTimeRepository = laundryTimeRepository;
             _reservationRepository = reservationRepository;
         }
+
+        #region Sync
 
         public IEnumerable<LaundryTime> GetTimeSpans()
         {
@@ -37,5 +40,32 @@ namespace Guldborgen.Booking.Domain
                 Date = date
             });
         }
+
+        #endregion
+
+
+        #region Async
+
+        public async Task<IEnumerable<LaundryTime>> GetTimeSpansAsync()
+        {
+            return await _laundryTimeRepository.FindAllAsync();
+        }
+
+        public async Task<IEnumerable<Reservation>> GetReservationsAsync()
+        {
+            return await _reservationRepository.FindAllAsync();
+        }
+
+        public async Task AddReservationAsync(int userId, int laundryTimeId, DateTime date)
+        {
+            await _reservationRepository.AddAsync(new Reservation
+            {
+                UserId = userId,
+                LaundryTimeId = laundryTimeId,
+                Date = date
+            });
+        }
+
+        #endregion
     }
 }
