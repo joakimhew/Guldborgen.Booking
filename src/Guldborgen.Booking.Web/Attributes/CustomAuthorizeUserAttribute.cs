@@ -28,7 +28,8 @@ namespace Guldborgen.Booking.Web.Attributes
             if (RequiredRole == null)
                 return httpContext.User != null;
 
-            return Current.User.HasRole(RequiredRole.Value) && Current.User != null;
+            //todo: Add role validation
+            return false;
         }
 
         public override void OnAuthorization(AuthorizationContext filterContext)

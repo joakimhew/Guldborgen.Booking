@@ -44,11 +44,10 @@ namespace Guldborgen.Booking.Web
             var accountService =
                 System.Web.Mvc.DependencyResolver.Current.GetService<IAccountService>();
 
-            Current.UserSession =
-                accountService.GetUserSessionById(sessionId);
+            var session =accountService.GetUserSessionById(sessionId);
 
             HttpContext.Current.User = 
-                accountService.GetUserBySession(Current.UserSession);
+                accountService.GetUserBySession(session);
         }
 
         public static String GetIP(HttpContext context)

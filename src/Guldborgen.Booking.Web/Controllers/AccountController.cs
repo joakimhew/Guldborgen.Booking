@@ -24,7 +24,7 @@ namespace Guldborgen.Booking.Web.Controllers
         [Route("account/login")]
         public ActionResult Login()
         {
-            if (Current.User != null)
+            if (HttpContext.User != null)
                 return RedirectToAction("Index", "Home");
 
             return View();
@@ -50,7 +50,6 @@ namespace Guldborgen.Booking.Web.Controllers
                 };
 
                 await _accountService.AddSessionAsync(userSession);
-                Current.UserSession = userSession;
 
                 HttpCookie authCookie = new HttpCookie("SESSION_ID", sessionId.ToString());
 
@@ -69,7 +68,7 @@ namespace Guldborgen.Booking.Web.Controllers
         [CustomAuthorizeUser]
         public async Task<ActionResult> Logout()
         {
-            await _accountService.RemoveSessionAsync(Current.UserSession);
+            //todo: Remove user session
             return RedirectToAction("Index", "Home");
         }
     }
