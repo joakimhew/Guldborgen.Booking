@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Guldborgen.Booking.Common.Models;
 using Guldborgen.Booking.Domain;
 
 namespace Guldborgen.Booking.Web
@@ -33,7 +34,10 @@ namespace Guldborgen.Booking.Web
             HttpCookie authCookie = Request.Cookies["SESSION_ID"];
 
             if (authCookie == null)
+            {
+                HttpContext.Current.User = null;
                 return;
+            }
 
             Guid sessionId = Guid.Parse(authCookie.Value);
 
@@ -43,7 +47,7 @@ namespace Guldborgen.Booking.Web
             Current.UserSession =
                 accountService.GetUserSessionById(sessionId);
 
-            Current.User =
+            HttpContext.Current.User = 
                 accountService.GetUserBySession(Current.UserSession);
         }
 

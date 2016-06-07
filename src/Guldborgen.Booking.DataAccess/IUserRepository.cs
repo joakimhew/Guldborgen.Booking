@@ -9,6 +9,7 @@ namespace Guldborgen.Booking.DataAccess
         #region Sync
 
         User FindByEmail(string email);
+        User FindByUsername(string username);
         string GetUserPasswordHash(string email);
 
         #endregion
@@ -16,6 +17,7 @@ namespace Guldborgen.Booking.DataAccess
         #region Async
 
         Task<User> FindByEmailAsync(string email);
+        Task<User> FindByUsernameAsync(string username);
         Task<string> GetUserPasswordHashAsync(string email);
 
         #endregion

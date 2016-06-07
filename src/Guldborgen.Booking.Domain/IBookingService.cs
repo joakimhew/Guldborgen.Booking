@@ -11,7 +11,7 @@ namespace Guldborgen.Booking.Domain
 
         IEnumerable<LaundryTime> GetTimeSpans();
         IEnumerable<Reservation> GetReservations();
-        void AddReservation(int userId, int laundryTimeId, DateTime date);
+        void AddReservation(string username, int laundryTimeId, DateTime date);
 
         #endregion
 
@@ -19,7 +19,7 @@ namespace Guldborgen.Booking.Domain
 
         Task<IEnumerable<LaundryTime>> GetTimeSpansAsync();
         Task<IEnumerable<Reservation>> GetReservationsAsync();
-        Task AddReservationAsync(int userId, int laundryTimeId, DateTime date);
+        Task AddReservationAsync(string username, int laundryTimeId, DateTime date);
         
         #endregion
     }

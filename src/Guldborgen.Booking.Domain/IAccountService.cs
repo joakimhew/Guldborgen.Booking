@@ -17,6 +17,7 @@ namespace Guldborgen.Booking.Domain
         void RemoveSession(UserSession userSession);
         User GetUserBySession(UserSession userSession);
         User GetUserById(int id);
+        User GetUserByUsername(string username);
         IEnumerable<Role> GetUserRoles(int userId);
 
         #endregion
@@ -30,6 +31,7 @@ namespace Guldborgen.Booking.Domain
         Task RemoveSessionAsync(UserSession userSession);
         Task<User> GetUserBySessionAsync(UserSession userSession);
         Task<User> GetUserByIdAsync(int id);
+        Task<User> GetUserByUsernameAsync(string username);
         Task<IEnumerable<Role>> GetUserRolesAsync(int userId);
 
         #endregion

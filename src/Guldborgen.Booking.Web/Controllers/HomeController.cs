@@ -60,7 +60,7 @@ namespace Guldborgen.Booking.Web.Controllers
                     laundryTime.StartTime, laundryTime.EndTime))
                 {
                     model.LaundryRoomStatus = LaundryRoomStatus.Busy;
-                    model.CurrentUser = await _accountService.GetUserByIdAsync(reservation.UserId);
+                    model.CurrentUser = await _accountService.GetUserByUsernameAsync(reservation.Username);
                     model.UserComment = reservation.Comment;
 
                     break;
@@ -117,8 +117,8 @@ namespace Guldborgen.Booking.Web.Controllers
         {
             Debug.Write($"Timespan id: {timespanId} | Date: {date}");
 
-            if (Current.User.Id != null)
-               await _bookingService.AddReservationAsync(Current.User.Id.Value, timespanId, date);
+            if (HttpContext.User.Identity != null)
+               await _bookingService.AddReservationAsync(HttpContext.User.Identity.Name, timespanId, date);
 
             return RedirectToAction("Index", "Home");
         }

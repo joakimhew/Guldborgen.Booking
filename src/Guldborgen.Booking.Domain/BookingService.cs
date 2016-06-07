@@ -31,11 +31,11 @@ namespace Guldborgen.Booking.Domain
             return _reservationRepository.FindAll();
         }
 
-        public void AddReservation(int userId, int laundryTimeId, DateTime date)
+        public void AddReservation(string username, int laundryTimeId, DateTime date)
         {
             _reservationRepository.Add(new Reservation
             {
-                UserId = userId,
+                Username = username,
                 LaundryTimeId = laundryTimeId,
                 Date = date
             });
@@ -56,11 +56,11 @@ namespace Guldborgen.Booking.Domain
             return await _reservationRepository.FindAllAsync();
         }
 
-        public async Task AddReservationAsync(int userId, int laundryTimeId, DateTime date)
+        public async Task AddReservationAsync(string username, int laundryTimeId, DateTime date)
         {
             await _reservationRepository.AddAsync(new Reservation
             {
-                UserId = userId,
+                Username = username,
                 LaundryTimeId = laundryTimeId,
                 Date = date
             });

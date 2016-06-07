@@ -79,6 +79,11 @@ namespace Guldborgen.Booking.Domain
             return _userRepository.FindById(id);
         }
 
+        public User GetUserByUsername(string username)
+        {
+            return _userRepository.FindByUsername(username);
+        }
+
         public IEnumerable<Role> GetUserRoles(int userId)
         {
             return _roleRepository.FindRolesByUserId(userId);
@@ -132,6 +137,11 @@ namespace Guldborgen.Booking.Domain
         public async Task<User> GetUserByIdAsync(int id)
         {
             return await _userRepository.FindByIdAsync(id);
+        }
+
+        public async Task<User> GetUserByUsernameAsync(string username)
+        {
+            return await _userRepository.FindByUsernameAsync(username);
         }
 
         public async Task<IEnumerable<Role>> GetUserRolesAsync(int userId)

@@ -1,4 +1,5 @@
-﻿using Guldborgen.Booking.Common.Models;
+﻿using System.Security.Principal;
+using Guldborgen.Booking.Common.Models;
 
 namespace Guldborgen.Booking.Web.ViewModels
 {

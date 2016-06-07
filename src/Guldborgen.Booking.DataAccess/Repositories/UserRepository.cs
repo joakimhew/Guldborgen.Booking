@@ -59,6 +59,14 @@ namespace Guldborgen.Booking.DataAccess.Repositories
                " WHERE U.Email = @Email", new { @Email = email }).FirstOrDefault();
         }
 
+        public User FindByUsername(string username)
+        {
+            return _dbConnection.Query<User>(
+               "SELECT U.* " +
+               "FROM dbo.[User] U " +
+               " WHERE U.Username = @Username", new { @Username = username }).FirstOrDefault();
+        }
+
         public string GetUserPasswordHash(string email)
         {
             return _dbConnection
@@ -114,6 +122,16 @@ namespace Guldborgen.Booking.DataAccess.Repositories
                 "SELECT U.* " +
                 "FROM dbo.[User] U " +
                 " WHERE U.Email = @Email", new {@Email = email});
+
+            return result.FirstOrDefault();
+        }
+
+        public async Task<User> FindByUsernameAsync(string username)
+        {
+            var result = await _dbConnection.QueryAsync<User>(
+               "SELECT U.* " +
+               "FROM dbo.[User] U " +
+               " WHERE U.Username = @Username", new { @Username = username });
 
             return result.FirstOrDefault();
         }

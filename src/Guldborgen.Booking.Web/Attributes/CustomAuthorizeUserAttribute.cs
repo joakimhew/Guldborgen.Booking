@@ -22,11 +22,11 @@ namespace Guldborgen.Booking.Web.Attributes
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            if (Current.User == null)
+            if (httpContext.User == null)
                 return false;
 
             if (RequiredRole == null)
-                return Current.User != null;
+                return httpContext.User != null;
 
             return Current.User.HasRole(RequiredRole.Value) && Current.User != null;
         }

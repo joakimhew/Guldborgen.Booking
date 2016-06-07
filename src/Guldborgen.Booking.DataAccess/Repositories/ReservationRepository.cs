@@ -46,7 +46,7 @@ namespace Guldborgen.Booking.DataAccess.Repositories
         {
             _dbConnection.Execute("usp_AddReservation", new
             {
-                entity.UserId,
+                entity.Username,
                 entity.LaundryTimeId,
                 entity.Date
             }, commandType: CommandType.StoredProcedure);
@@ -88,7 +88,7 @@ namespace Guldborgen.Booking.DataAccess.Repositories
         {
             await _dbConnection.ExecuteAsync("usp_AddReservation", new
             {
-                entity.UserId,
+                entity.Username,
                 entity.LaundryTimeId,
                 entity.Date
             }, commandType: CommandType.StoredProcedure);
